@@ -40,6 +40,7 @@ UserSchema.pre('save', async function(next){
     // console.log("Pre hook will save user data", this);
 
     const user = this;
+    
     //hashing password and save into db
     user.password = await bcrypt.hash(user.password, Number(config.bcrypt_sold_rounds) )
     next()

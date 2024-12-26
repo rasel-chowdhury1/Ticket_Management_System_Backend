@@ -13,7 +13,7 @@ app.get('/', (req: Request, res: Response) => {
 })
   
   app.listen(port, () => {
-    console.log(`ticket management sysetem listening on port ${port}`)
+    console.log(`Ticket management sysetem listening on port ${port}`)
   })
 
   app.use(GlobalErrorHandler)
