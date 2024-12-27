@@ -6,6 +6,11 @@ const CreateBusValidationSchema = z.object({
       .trim()
       .nonempty({ message: '"Name" cannot be an empty field' })
       .refine(value => typeof value === "string", { message: '"Name" should be a type of string' }),
+    number: z
+      .string()
+      .trim()
+      .nonempty({ message: '"Bus number " cannot be an empty field' })
+      .refine(value => typeof value === "string", { message: '"Bus number" should be a type of string' }),
     route: z
       .string()
       .trim()

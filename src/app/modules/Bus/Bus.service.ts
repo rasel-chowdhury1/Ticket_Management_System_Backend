@@ -1,4 +1,4 @@
-import { TBus } from "./Bus.interface";
+import { TBus } from "./Bus.type";
 import { BusModel } from "./Bus.model";
 
 

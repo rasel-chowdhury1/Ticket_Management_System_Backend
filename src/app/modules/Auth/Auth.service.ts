@@ -1,7 +1,7 @@
 import httpStatus from "http-status"
 import { UserModel } from "../User/User.model"
 import AppError from "../../errors/AppError";
-import { TLoginUser } from "./Auth.interface";
+import { TLoginUser } from "./Auth.type";
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcrypt';
 import config from "../../config";

@@ -1,4 +1,4 @@
-import { TUser } from "./User.interface";
+import { TUser } from "./User.type";
 import { UserModel } from "./User.model";
 
 

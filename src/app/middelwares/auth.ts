@@ -3,7 +3,7 @@ import catchAsync from "../utils/catchAsync"
 import httpStatus from "http-status"
 import jwt, { JwtPayload } from "jsonwebtoken"
 import config from "../config"
-import { TUserRole } from "../modules/Auth/Auth.interface"
+import { TUserRole } from "../modules/Auth/Auth.type"
 import { UserModel } from "../modules/User/User.model"
 
 
@@ -35,7 +35,7 @@ const auth = (...requiredRules: TUserRole[]) => {
         // const role = decoded.role;
         // const id = decoded.userId;
 
-        const {email, role  } = decoded;
+    const {email, role  } = decoded;
 
         //checking if the user is exists
     const isUserExists = await UserModel.findOne({email: email})

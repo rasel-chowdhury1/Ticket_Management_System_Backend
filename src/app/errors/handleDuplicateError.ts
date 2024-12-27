@@ -1,4 +1,4 @@
-import { TErrorSource, TGenericsResponse } from "../interface/interface";
+import { TErrorSource, TGenericsResponse } from "../interface/type";
 
 const handleDuplicateError = (err: any): TGenericsResponse => {
     const match = err.errmsg.match(/"([^"]*)"/);

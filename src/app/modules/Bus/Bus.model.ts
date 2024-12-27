@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { TBus } from "./Bus.interface";
+import { TBus } from "./Bus.type";
 
 const BusSchema = new  Schema<TBus>(
     {
@@ -8,6 +8,11 @@ const BusSchema = new  Schema<TBus>(
         required: true,
         trim: true,
       },
+      number: {
+        type: String,
+        required: true,
+        unique: true
+       },
       route: {
         type: String,
         required: true,
