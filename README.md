@@ -5,6 +5,19 @@ Develop a backend system for managing bus tickets with the ability for users to 
 
 ---
 
+## Key Features
+
+1. **Authentication and Authorization**
+   - Secure sign-in, sign-up and logout for users and admins using JWT.
+   - Role-based access control for different functionalities.
+
+2. **Admin Capabilities**
+   - Create, update, and delete of bus and ticket listing listings.
+
+3. **User Capabilities**
+   - View all available buses and specific bus details.
+   - purchase a ticket and view all available tickets .
+
 ## Features
 
 ### Core Functionalities
@@ -28,11 +41,11 @@ Develop a backend system for managing bus tickets with the ability for users to 
 ---
 
 ## Technology Stack
-- **Backend**: Node.js, Express.js.
-- **Database**: MongoDB with Mongoose.
-- **Validation**: Zod.
-- **Language**: TypeScript .
 
+- **Backend**: TypeScript, Express.js
+- **Authentication**: JWT (JSON Web Tokens), bcrypt
+- **Database**: MongoDB with Mongoose ODM
+- **Validation**: Zod for type validation
 ---
 
 ## Required APIs
@@ -63,43 +76,105 @@ Provide an ER diagram outlining the relationships between users, buses, and tick
 ---
 
 ## API Documentation
-Submit Postman API Documentation with all endpoints, their request/response structures, and sample payloads. *(Include a link to the documentation here.)*
+Submit Postman API Documentation with all endpoints, their request/response structures, and sample payloads. *([Include a link to the documentation here.](https://documenter.getpostman.com/view/13933973/2sAYJ6CKyQ))*
 
 ---
 
-## Installation and Setup
+## Getting Started
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd ticket-management-system
-   ```
+To use this project, follow these steps:
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+1. **Clone the repository:**
 
-3. Set up environment variables:
-   - Create a `.env` file in the root directory.
-   - Add the following variables:
-     ```env
-     PORT=<port-number>
-     MONGO_URI=<mongodb-connection-string>
-     JWT_SECRET=<your-secret-key>
-     ```
+    ```bash
+    git clone https://github.com/rasel-chowdhury1/Ticket_Management_System_Backend.git
+    ```
 
-4. Run the application:
-   ```bash
-   npm run dev
-   ```
+2. **Navigate to the project directory:**
 
+    ```bash
+    cd Ticket_Management_System
+    ```
 
+3. **Install the dependencies:**
 
----
+    ```bash
+    npm install
+    ```
+
+4. **Set up environment variables:**
+
+    Create a `.env` file in the root directory with the following content:
+
+    ```plaintext
+    MONGODB_URI=mongodb://localhost:27017/car-rental
+    JWT_SECRET=your_jwt_secret
+    PORT=3000
+    ```
+
+5. **Run the development server:**
+
+    ```bash
+    npm start
+    ```
+
+6. **Access the application:**
+
+    Open your browser and go to `https://ticket-management-system-kappa.vercel.app`.
+
+## Feedback
+
+If you have any feedback or encounter any issues, please don't hesitate to inform me.
+
+Thank you for using our bus management System! ❤️
 
 ## Contact
 For inquiries or support, contact:
 - **Email**: [chowhduryrasel040@gmail.com]
 - **GitHub**: [rasel-chowdhury1](https://github.com/rasel-chowdhury1)
+
+
+# Car Rental Reservation System
+
+
+
+
+
+## API Endpoints
+
+### 1. User Authentication
+
+- **Sign In**
+  - `POST /api/auth/signin`
+- **Sign Up**
+  - `POST /api/auth/signup`
+
+### 2. Cars Management
+
+- **Admin Actions** (Authorization: Admin Bearer Token)
+  - Create Car: `POST /api/cars`
+  - Update Car: `PUT /api/cars/${carId}`
+  - Delete Car: `DELETE /api/cars/${carId}`
+  
+- **Public Actions**
+  - Get All Cars: `GET /api/cars`
+  - Get Specific Car: `GET /api/cars/${carId}`
+
+### 3. Bookings Management
+
+- **Admin Actions** (Authorization: Admin Bearer Token)
+  - Get All Bookings (Search by carId and date): `GET /api/bookings?carId=...&date=...`
+  - Update Booking End Time: `PUT /api/bookings/return`
+  
+- **User Actions** (Authorization: User Bearer Token)
+  - Create Booking: `POST /api/bookings`
+  - Get User's Bookings: `GET /api/bookings/my-bookings`
+
+
+
+## Feedback
+
+If you have any feedback or encounter any issues, please don't hesitate to inform us.
+
+Thank you for using our Car Rental Reservation System! ❤️
 
