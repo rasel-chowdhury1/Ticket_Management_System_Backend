@@ -71,7 +71,7 @@ Develop a backend system for managing bus tickets with the ability for users to 
 ---
 
 ## ER Diagram
-Provide an ER diagram outlining the relationships between users, buses, and tickets. *(Include a link or attach the diagram here.)*
+Provide an ER diagram outlining the relationships between users, buses, and tickets. *([Include a link or attach the diagram here.](https://drive.google.com/file/d/1D6zVLY0C9nOoHbuOdSpxu2PMutu2GJy7/view?usp=sharing))*
 
 ---
 
