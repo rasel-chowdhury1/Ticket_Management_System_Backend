@@ -4,6 +4,25 @@ import { TTicket } from "./Ticket.type";
 import { TicketModel } from "./Ticket.model";
 
 const createTicketIntoDb = async (ticketData: TTicket) => {
+  // console.log({ ticketData });
+
+  // Check if a ticket with the same bus, seat, and dateSlot already exists
+  const existingTicket = await TicketModel.findOne({
+    $and: [
+      { bus: ticketData.bus },
+      { seat: ticketData.seat },
+      { dateSlot: ticketData.dateSlot },
+    ],
+  });
+
+  // console.log({existingTicket}) 
+
+  if (existingTicket) {
+    throw new Error('Ticket with the same bus, seat, and dateSlot already exists');
+  }
+
+ 
+  // If no existing ticket, proceed to create the new ticket
   const result = await TicketModel.create(ticketData);
   return result;
 };
@@ -13,10 +32,42 @@ const getSingleTicketFromDB = async (id: string) => {
   return result;
 };
 
-const getAllTicketsFromDB = async () => {
-  const result = await TicketModel.find({ isDeleted: false, isSold: false }).populate("bus user");
-  return result;
-};
+const getAllTicketsFromDB = async (query: Record<string, unknown>) => {
+      const { busName, seat, date } = query;
+
+      let result;
+
+      // Build the query conditions
+      let queryConditions: Record<string, unknown> = {};
+
+      if (seat) {
+        queryConditions.seat = seat;
+      }
+
+      if (date) {
+        queryConditions.dateSlot = date;
+      }
+
+      if (busName) {
+        result = await TicketModel.find(queryConditions)
+          .populate({
+            path: "bus",
+            match: { name: { $regex: busName, $options: "i" } }, // Filter buses by the name
+          })
+          .populate("user"); // Populate user details
+
+        // Filter out tickets where `bus` is null (if no bus matches the name)
+        result = result.filter((ticket) => ticket.bus !== null);
+      } else {
+        result = await TicketModel.find({
+          ...queryConditions,
+          isDeleted: false,
+          isSold: false,
+        }).populate("bus user");
+      }
+
+      return result;
+    };
 
 const updateTicketIntoDB = async (id: string, updateData: Partial<TTicket>) => {
   const result = await TicketModel.findByIdAndUpdate(id, updateData, { new: true }).populate("bus user");

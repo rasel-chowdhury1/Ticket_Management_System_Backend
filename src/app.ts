@@ -3,9 +3,15 @@ import NotFound from './app/middelwares/NotFound';
 import router from './app/routes/indes';
 import GlobalErrorHandler from './app/middelwares/GlobalErrorHandler';
 const app : Application = express()
+import cors from 'cors';
+
+
 const port = 3000
 
+
 app.use(express.json());
+app.use(cors());
+
 app.use("", router);
 
 app.get('/', (req: Request, res: Response) => {

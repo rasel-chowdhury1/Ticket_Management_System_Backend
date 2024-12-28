@@ -5,7 +5,7 @@ import httpStatus from "http-status";
 import { TicketServices } from "./Ticket.service";
 
 const createTicket = catchAsync(async (req: Request, res: Response) => {
-  console.log(req.body)
+  // console.log(req.body)
   const result = await TicketServices.createTicketIntoDb(req.body);
 
   sendResponse(res, {
@@ -17,7 +17,7 @@ const createTicket = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getAllTickets = catchAsync(async (req, res) => {
-  const result = await TicketServices.getAllTicketsFromDB();
+  const result = await TicketServices.getAllTicketsFromDB(req.query);
 
   if (result.length > 0) {
     sendResponse(res, {
